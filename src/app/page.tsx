@@ -1,37 +1,57 @@
 import React from 'react';
+import { Scale, ShieldCheck, Phone, Mail } from 'lucide-react'; // Icon လေးတွေ သုံးဖို့ပါ
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans">
+    <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-yellow-500/30">
+      
+      {/* Background Image with Overlay */}
+      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <img 
+          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000" 
+          alt="Justice Background" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       {/* Navigation */}
-      <nav className="bg-[#1e293b] border-b border-slate-700 p-4 sticky top-0 z-50">
+      <nav className="relative z-10 bg-[#0f172a]/80 backdrop-blur-md border-b border-white/10 p-4 sticky top-0">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-            Free Legal Aid Myanmar
-          </h1>
-          <a href="#contact" className="bg-yellow-500 hover:bg-yellow-600 text-[#0f172a] px-5 py-2 rounded-full font-bold transition-all transform hover:scale-105">
+          <div className="flex items-center gap-2">
+            <Scale className="text-yellow-500 w-8 h-8" />
+            <h1 className="text-xl md:text-2xl font-bold text-white tracking-tighter">
+              MYANMAR LEGAL AID
+            </h1>
+          </div>
+          <a href="#contact" className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-2 rounded-full font-bold transition-all shadow-[0_0_15px_rgba(234,179,8,0.3)]">
             အကူအညီတောင်းရန်
           </a>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <header className="py-20 px-4 text-center">
-        <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-          တရားမျှတမှုသည် <br className="md:hidden" /> လူတိုင်းအတွက် ဖြစ်ရမည်
+      <header className="relative z-10 py-24 px-4 text-center">
+        <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm mb-6">
+          <ShieldCheck size={16} />
+          <span>၁၀၀% အခမဲ့ ဥပဒေရေးရာ အကူအညီ</span>
+        </div>
+        <h2 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+          တရားမျှတမှုသည် <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">လူတိုင်းအတွက်</span> ဖြစ်ရမည်
         </h2>
-        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-          ငွေကြေးမတတ်နိုင်သဖြင့် ဥပဒေအခက်အခဲဖြစ်နေသော မိဘပြည်သူများအတွက် 
-          <span className="text-yellow-500 font-bold"> ရာဇဝတ်မှုနှင့် တရားမမှုများ </span> 
-          ကို အခမဲ့ အစွမ်းကုန် လိုက်ပါကူညီပေးပါသည်။
+        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          ငွေကြေးမတတ်နိုင်သော မိဘပြည်သူများအတွက် ရာဇဝတ်မှုနှင့် တရားမမှုများကို 
+          ကျွမ်းကျင်ရှေ့နေများမှ အခမဲ့ အစွမ်းကုန် လိုက်ပါကူညီပေးနေပါသည်။
         </p>
       </header>
 
       {/* Form Section */}
-      <main id="contact" className="max-w-2xl mx-auto py-16 px-6">
-        <div className="bg-[#1e293b] rounded-2xl shadow-2xl p-8 border border-slate-700">
-          <h3 className="text-2xl font-bold text-center text-white mb-8 underline decoration-yellow-500 decoration-4 underline-offset-8">
-            အမှုအကြောင်းအရာ တင်ပြရန်
+      <main id="contact" className="relative z-10 max-w-2xl mx-auto py-12 px-6">
+        <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
+          {/* Decorative Gradient */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-yellow-500/10 blur-3xl rounded-full"></div>
+          
+          <h3 className="text-3xl font-bold text-center text-white mb-10">
+            အမှုတွဲ တင်ပြရန်
           </h3>
           
           <form 
@@ -39,78 +59,54 @@ export default function Home() {
             method="POST" 
             className="space-y-6"
           >
-            {/* Input တစ်ခုချင်းစီကို စာလုံးအမဲရောင်နဲ့ Background မီးခိုးရင့် ပုံစံပြောင်းထားပါတယ် */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">အမည်အပြည့်အစုံ</label>
-              <input 
-                type="text" 
-                name="အမည်" 
-                className="w-full p-3 bg-[#0f172a] border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition placeholder-slate-500" 
-                placeholder="ဥပမာ - ဦးဘ" 
-                required 
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
-              <input 
-                type="tel" 
-                name="ဖုန်းနံပါတ်" 
-                className="w-full p-3 bg-[#0f172a] border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition placeholder-slate-500" 
-                placeholder="09xxxxxxx" 
-                required 
-              />
+            {/* Success Page Redirect */}
+            <input type="hidden" name="_next" value="https://legal-aid-site-sooty.vercel.app/" />
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-slate-400 mb-2">အမည်အပြည့်အစုံ</label>
+                <input type="text" name="name" className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 outline-none transition" placeholder="ဦးဘ" required />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-400 mb-2">ဖုန်းနံပါတ်</label>
+                <input type="tel" name="phone" className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 outline-none transition" placeholder="09xxxxxxx" required />
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">အမှုအမျိုးအစား</label>
-              <select 
-                name="အမှုအမျိုးအစား" 
-                className="w-full p-3 bg-[#0f172a] border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-yellow-500 outline-none"
-              >
-                <option value="ရာဇဝတ်မှု">ရာဇဝတ်မှု (Criminal Case)</option>
-                <option value="တရားမမှု">တရားမမှု (Civil Case)</option>
-                <option value="မြေယာအမှု">မြေယာအမှု</option>
-                <option value="အခြား">အခြား</option>
+              <label className="block text-sm font-medium text-slate-400 mb-2">အီးမေးလ် (Auto-Reply ရရှိရန်)</label>
+              <input type="email" name="email" className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 outline-none transition" placeholder="example@gmail.com" required />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">အမှုအမျိုးအစား</label>
+              <select name="case_type" className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 outline-none appearance-none">
+                <option className="bg-[#0f172a]" value="ရာဇဝတ်မှု">ရာဇဝတ်မှု (Criminal Case)</option>
+                <option className="bg-[#0f172a]" value="တရားမမှု">တရားမမှု (Civil Case)</option>
+                <option className="bg-[#0f172a]" value="မြေယာအမှု">မြေယာအမှု</option>
+                <option className="bg-[#0f172a]" value="အခြား">အခြား</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">ဖြစ်စဉ်အကျဉ်းချုပ်</label>
-              <textarea 
-                name="အမှုအကြောင်းအရာ" 
-                rows={5} 
-                className="w-full p-3 bg-[#0f172a] border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition placeholder-slate-500" 
-                placeholder="ဖြစ်စဉ်ကို အကျဉ်းချုပ် ရှင်းလင်းစွာ ရေးပေးပါ..."
-                required
-              ></textarea>
+              <label className="block text-sm font-medium text-slate-400 mb-2">ဖြစ်စဉ်အကျဉ်းချုပ်</label>
+              <textarea name="message" rows={4} className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-yellow-500 outline-none transition" placeholder="အမှုဖြစ်စဉ်ကို ရှင်းလင်းစွာ ရေးပေးပါ..." required></textarea>
             </div>
 
-            <input type="hidden" name="_subject" value="အမှုသစ်တစ်ခု ရောက်ရှိလာပါသည်" />
-
-            <button 
-              type="submit" 
-              className="w-full bg-yellow-500 text-[#0f172a] font-extrabold py-4 rounded-lg hover:bg-yellow-400 shadow-lg transform active:scale-95 transition-all duration-200 uppercase tracking-wider"
-            >
+            <button type="submit" className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-extrabold py-4 rounded-xl hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] transform active:scale-[0.98] transition-all duration-200">
               အကူအညီတောင်းခံလွှာ ပေးပို့မည်
             </button>
           </form>
 
-          <p className="text-xs text-center text-slate-500 mt-6 italic">
-            * ပေးပို့လာသော အချက်အလက်များကို ရှေ့နေကျင့်ဝတ်နှင့်အညီ လျှို့ဝှက်စွာ သိမ်းဆည်းပေးပါမည်။
-          </p>
+          <div className="mt-8 flex items-center justify-center gap-6 text-slate-500 text-sm">
+            <span className="flex items-center gap-1"><Phone size={14}/> ၀၉-xxxxxxx</span>
+            <span className="flex items-center gap-1"><Mail size={14}/> contact@legal-aid.com</span>
+          </div>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-[#1e293b] border-t border-slate-700 py-12 px-6 text-center">
-        <div className="max-w-6xl mx-auto">
-          <p className="font-bold text-white mb-2">Free Legal Aid Myanmar</p>
-          <p className="text-sm text-slate-400">မြန်မာနိုင်ငံအနှံ့အပြားရှိ ငွေကြေးမတတ်နိုင်သူများအတွက် အခမဲ့ဥပဒေဝန်ဆောင်မှု</p>
-          <div className="mt-6 border-t border-slate-800 pt-6 text-xs text-slate-500">
-            © 2026 Legal Aid Network Myanmar.
-          </div>
-        </div>
+      <footer className="relative z-10 py-12 text-center text-slate-500 text-sm border-t border-white/5">
+        <p>© 2026 Legal Aid Network Myanmar. All Rights Reserved.</p>
       </footer>
     </div>
   );
